@@ -7,7 +7,7 @@ import { TabComponent } from './tab/tab.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
   ],
   declarations: [
     TabsComponent,

@@ -1,7 +1,0 @@
-<tab-title [isActive]="isActive" [id]="tab" (onClick)="clickTab($event)">
-  Tab <b>{{ tab }}</b> title
-</tab-title>
-<tab-content *if="isActive">
-  Tab <b>{{ index }}</b> content
-  <test [tab]="index"></test>
-</tab-content>
