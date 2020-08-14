@@ -12,9 +12,9 @@ export class TabTitleComponent implements OnInit {
     get hostClass() {
         return [
             'tabs__title',
-            this.isActive ? 'tabs__title--active' : ''
+            this.isActive ? 'tabs__title--active' : '',
         ].join(' ');
-    };
+    }
 
     constructor() {
     }

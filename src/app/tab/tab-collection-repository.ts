@@ -1,7 +1,6 @@
-import {ITabCollection, ITabCollectionRepository} from "../types";
-import {maxInNumberArray} from "../../utils";
-import {TabCollection} from "./tab-collection";
-
+import {ITabCollection, ITabCollectionRepository} from './types';
+import {isUndefined, maxInNumberArray} from '../utils';
+import {TabCollection} from './tab-collection';
 
 export class TabCollectionRepository implements ITabCollectionRepository {
     protected map = new Map<number, ITabCollection>();
@@ -15,7 +14,7 @@ export class TabCollectionRepository implements ITabCollectionRepository {
     }
 
     add(collectionIndex?: number): ITabCollection {
-        if (typeof collectionIndex === "undefined") {
+        if (isUndefined(collectionIndex)) {
             collectionIndex = maxInNumberArray(this.map.keys()) + 1;
         }
         const collection = new TabCollection(collectionIndex);

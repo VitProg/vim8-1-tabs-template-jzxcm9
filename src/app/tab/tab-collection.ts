@@ -1,11 +1,11 @@
-import {ITab, ITabCollection} from "../types";
+import {ITab, ITabCollection} from './types';
 
 export class TabCollection implements ITabCollection {
     constructor(readonly collectionIndex: number) {
     }
 
-    active: number = 0;
-    list: Readonly<ITab[]> = [];
+    active = 0;
+    list: ITab[] = [];
 
     get length() {
         return this.list.length;
@@ -27,16 +27,27 @@ export class TabCollection implements ITabCollection {
         return this.active === index;
     }
 
-    removeLast(): boolean {
-        if (this.list.length === 0) {
+    remove(removedIndex: number): boolean {
+        if (removedIndex >= this.list.length) {
             return false;
         }
-        const removedIndex = this.list.length - 1;
+
+        // immutable remove item in array
+        this.list = [
+            ...this.list.slice(0, removedIndex),
+            ...this.list.slice(removedIndex + 1),
+        ];
+
         if (this.isActive(removedIndex)) {
-            this.toggle(removedIndex - 1)
+            this.toggle(0);
         }
-        this.list.pop();
+
         return true;
+    }
+
+    removeLast(): boolean {
+        const lastIndex = this.list.length - 1;
+        return this.remove(lastIndex);
     }
 
     toggle(index: number): boolean {
@@ -47,5 +58,4 @@ export class TabCollection implements ITabCollection {
         this.active = 0;
         return false;
     }
-
 }
