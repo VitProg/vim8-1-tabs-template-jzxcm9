@@ -15,11 +15,10 @@ export interface ITabCollection {
     toggle(index: number): boolean;
     get(tabIndex: number): ITab | undefined;
     add(): ITab;
+    remove(index: number): boolean;
     removeLast(): boolean;
 }
 
 export interface ITab {
     tabIndex: number;
 }
-
-

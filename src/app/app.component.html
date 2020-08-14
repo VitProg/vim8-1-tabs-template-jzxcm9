@@ -11,7 +11,9 @@
 
   <tabs>
     <div class="tabs__titles">
-    <tab-title *ngFor="let tab of tabCollection.list" [isActive]="tabCollection.isActive(tab.tabIndex)" (click)="tabCollection.toggle(tab.tabIndex)">
+    <tab-title *ngFor="let tab of tabCollection.list"
+               [isActive]="tabCollection.isActive(tab.tabIndex)"
+               (click)="tabCollection.toggle(tab.tabIndex)">
       Tab <b>{{ tab.tabIndex }}</b> title
     </tab-title>
     </div>

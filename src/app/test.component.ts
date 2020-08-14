@@ -11,7 +11,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TestComponent implements OnInit {
   @Input() tab: number;
 
-  public ngOnInit() {
+  ngOnInit() {
     console.log(`>>> TestComponent ${this.tab} initialized`);
   }
 }
