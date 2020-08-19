@@ -1,48 +1,45 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {ITabCollection, ITabCollectionRepository} from './tab/types';
-import {TAB_COLLECTION_REPOSITORY} from './tab/di';
+import {Component} from '@angular/core';
 
 @Component({
-  selector: 'app',
+  selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ],
+  styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
+  tabs = [1, 2];
+  activeIndex: number | false = 0;
 
-  constructor(@Inject(TAB_COLLECTION_REPOSITORY) protected tabRepository: ITabCollectionRepository) {
-    //
+  get activeTab(): number | false {
+    return this.activeIndex === false ?
+      false :
+      this.getTabByIndex(this.activeIndex);
   }
 
-  ngOnInit() {
-    // add two tabs groups
-    this.tabRepository.add();
-    this.tabRepository.add();
-
-    // add two tabs in first group
-    this.tabRepository.get(0).add();
-    this.tabRepository.get(0).add();
-
-    // add three tabs in first group
-    this.tabRepository.get(1).add();
-    this.tabRepository.get(1).add();
-    this.tabRepository.get(1).add();
+  protected getTabByIndex(index: number): number {
+    return index in this.tabs ? this.tabs[index] : 0;
   }
 
-  dec(collectionIndex: number) {
-    const collection = this.tabRepository.get(collectionIndex);
-    if (collection) {
-      collection.removeLast();
+  dec() {
+    this.tabs = this.tabs.slice(0, -1);
+    if (this.isActive(this.tabs.length)) {
+      this.toggle(0);
     }
   }
 
-  inc(collectionIndex: number) {
-    const collection = this.tabRepository.get(collectionIndex);
-    if (collection) {
-      collection.add();
+  inc() {
+    this.tabs = [...this.tabs, (this.tabs.length + 1)];
+    if (this.activeTab === false) {
+      this.activeIndex = 0;
     }
   }
 
-  get tabs(): ITabCollection[] {
-    return this.tabRepository.list;
+  isActive(index: number) {
+    return this.activeIndex === index;
+  }
+
+  toggle(index: number) {
+    this.activeIndex = this.tabs.length > 0 ?
+      Math.min(this.tabs.length - 1, Math.max(0, index)) :
+      false;
   }
 }

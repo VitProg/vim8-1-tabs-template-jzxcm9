@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {ITabCollectionRepository} from '../types';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'tabs',
@@ -7,13 +6,9 @@ import {ITabCollectionRepository} from '../types';
   styleUrls: ['./tabs.component.css'],
 })
 export class TabsComponent implements OnInit {
-
-  // todo from DI container
-  protected tabRepository: ITabCollectionRepository;
-
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
-
 }

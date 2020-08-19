@@ -6,16 +6,8 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./tab.component.css'],
 })
 export class TabComponent implements OnInit {
-  @Input() index: number;
-  @Input() isActive: boolean;
-
   constructor() { }
 
   ngOnInit() {
   }
-
-  clickTab($event: Event) {
-
-  }
-
 }

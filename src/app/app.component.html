@@ -1,27 +1,23 @@
-
-
-<section *ngFor="let tabCollection of tabs" class="tabs-section">
-  <h4>Block #{{tabCollection.collectionIndex}} [{{tabCollection.length}}]</h4>
-  <button (click)="dec(tabCollection.collectionIndex)">
+<button (click)="dec()">
     Remove tab
-  </button>
-  <button (click)="inc(tabCollection.collectionIndex)">
+</button>
+<button (click)="inc()">
     Add tab
-  </button>
+</button>
 
-  <tabs>
+<br>
+
+<tabs>
     <div class="tabs__titles">
-    <tab-title *ngFor="let tab of tabCollection.list"
-               [isActive]="tabCollection.isActive(tab.tabIndex)"
-               (click)="tabCollection.toggle(tab.tabIndex)">
-      Tab <b>{{ tab.tabIndex }}</b> title
-    </tab-title>
+        <tab *ngFor="let tab of tabs; let index = index">
+            <tab-title [isActive]="isActive(index)" (click)="toggle(index)">
+                Tab <b>{{ tab }}</b> title
+            </tab-title>
+        </tab>
     </div>
-    <tab *ngFor="let tab of tabCollection.list">
-      <tab-content *ngIf="tabCollection.isActive(tab.tabIndex)">
-        Tab <b>{{ tab.tabIndex }}</b> content
-        <test [tab]="tab.tabIndex"></test>
-      </tab-content>
-    </tab>
-  </tabs>
-</section>
+    <tab-content *ngIf="activeTab !== false">
+        Tab <b>{{ activeTab }}</b> content
+        <test [tab]="activeTab"></test>
+    </tab-content>
+</tabs>
+

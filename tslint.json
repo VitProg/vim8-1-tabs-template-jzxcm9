@@ -140,7 +140,8 @@
     "use-pipe-transform-interface": true,
     "object-literal-sort-keys": false,
     "ordered-imports": false,
-    "member-access": [true, "no-public"]
+    "member-access": [true, "no-public"],
+    "no-trailing-whitespace": false
   },
   "rulesDirectory": [
     "codelyzer"

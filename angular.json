@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "app": {
+    "my-app": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -42,14 +42,14 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "app:build"
+            "browserTarget": "my-app:build"
           },
           "configurations": {}
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "app:build"
+            "browserTarget": "my-app:build"
           }
         },
         "lint": {
@@ -66,11 +66,11 @@
         }
       }
     },
-    "app-e2e": {
+    "my-app-e2e": {
       "root": "e2e",
       "sourceRoot": "e2e",
       "projectType": "application"
     }
   },
-  "defaultProject": "app"
+  "defaultProject": "my-app"
 }
